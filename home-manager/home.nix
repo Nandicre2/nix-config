@@ -57,7 +57,7 @@
     userName = "Nandicre2";
     userEmail = "nandicre@protonmail.com";
   };
-  programs.firefox.enable = true;
+  programs.firefox-wayland.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
