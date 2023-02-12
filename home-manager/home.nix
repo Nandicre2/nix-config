@@ -54,7 +54,7 @@
   programs.home-manager.enable = true;
   programs.git = {
     enable = true;
-    userName = "Nandicre2";
+    userName = "Nandicre";
     userEmail = "nandicre@protonmail.com";
   };
   programs.firefox = {
