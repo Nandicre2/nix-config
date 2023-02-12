@@ -62,6 +62,7 @@
     enable = true;
     package = pkgs.firefox-wayland;
   };
+  home.packages = with pkgs; [ freetube ];
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
