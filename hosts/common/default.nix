@@ -20,4 +20,6 @@
       allowUnfree = true;
     };
   };
+
+  hardware.enableRedistributableFirmware = true;
 }
