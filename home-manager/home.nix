@@ -62,6 +62,7 @@
     enable = true;
     package = pkgs.firefox-wayland;
   };
+  programs.vscode.enable = true;
   home.packages = with pkgs; [ freetube ];
 
   # Nicely reload system units when changing configs
