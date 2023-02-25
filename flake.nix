@@ -1,6 +1,8 @@
 {
   description = "Nandicre NixOS configuration";
 
+  # To update all inputs:
+  # $ nix flake update
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
