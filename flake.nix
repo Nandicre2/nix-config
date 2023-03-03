@@ -46,10 +46,20 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = {
-        # Asus VivoBook
+        # Primary Desktop (SFFPC)
+        ephaistos = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/ephaistos ];
+        };
+        # Laptop VivoBook
         aphrodite = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/aphrodite ];
+        };
+        # Server - Old desktop
+        apollon = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./hosts/apollon ];
         };
       };
     };
