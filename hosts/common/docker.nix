@@ -1,8 +1,9 @@
 { pkgs , ... }:
 {
-  virtualisation.podman = {
+  virtualisation.docker = {
     enable = true;
-    dockerCompat = true;
+    # Whether to periodically prune Docker resources
+    autoPrune.enable = true;
   };
 
 #  environment.persistence = {

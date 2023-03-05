@@ -63,7 +63,7 @@
     package = pkgs.firefox-wayland;
   };
   programs.vscode.enable = true;
-  home.packages = with pkgs; [ freetube podman-compose ];
+  home.packages = with pkgs; [ freetube ];
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

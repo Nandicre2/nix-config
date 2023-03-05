@@ -1,5 +1,7 @@
 # System configuration for my laptop
 { inputs, outputs, lib, config, pkgs, ... }:
+let ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in
 {
   imports = [
     inputs.hardware.nixosModules.common-cpu-amd
@@ -79,7 +81,14 @@
   users.users = {
     nandicre = {
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+      ] ++ ifTheyExist [
+        "networkmanager" # TODO : check if necessary
+        "docker"
+      ];
     };
   };
 
