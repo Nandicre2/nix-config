@@ -5,7 +5,7 @@
     inputs.impermanence.nixosModules.impermanence
     inputs.home-manager.nixosModules.home-manager
     ./nix.nix
-    ./docker.nix
+    ./podman.nix
   ];
 
   home-manager = {

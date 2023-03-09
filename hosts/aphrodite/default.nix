@@ -87,7 +87,6 @@ in
         "audio"
       ] ++ ifTheyExist [
         "networkmanager" # TODO : check if necessary
-        "docker"
       ];
     };
   };
