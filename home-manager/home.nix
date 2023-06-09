@@ -58,10 +58,7 @@
     userEmail = "nandicre@protonmail.com";
   };
   programs.gh.enable = true;
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox-wayland;
-  };
+  programs.firefox.enable = true;
   programs.vscode.enable = true;
   home.packages = with pkgs; [ freetube ];
 

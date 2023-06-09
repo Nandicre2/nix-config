@@ -10,7 +10,7 @@
     package = pkgs.nixUnstable;
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
       # Delete older generations too
       options = "--delete-older-than 7d";
     };
