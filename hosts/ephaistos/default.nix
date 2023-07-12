@@ -5,10 +5,16 @@
 {
   imports =
     [
+      inputs.disko.nixosModules.disko
+
       ./hardware-configuration.nix
 
       ../common
     ];
+
+  disko.devices = import ./disko.nix {
+    disks = [ "/dev/nvme0n1" ]; # replace this with your disk name i.e. /dev/nvme0n1
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

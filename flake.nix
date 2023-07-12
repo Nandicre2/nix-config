@@ -14,6 +14,10 @@
     };
 
     hardware.url = "github:nixos/nixos-hardware";
+
+    # Removing the manual partitioning part with a little boogie.
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:

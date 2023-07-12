@@ -1,5 +1,5 @@
-{ disks ? [ "/dev/nvme0n1" ], ... }: {
-  disko.devices = {
+{ disks ? [ "/dev/nvme0n1" ], ... }:
+{
     disk.main = {
       device = builtins.elemAt disks 0;
       type = "disk";
@@ -23,12 +23,14 @@
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
                 subvolumes = {
-                  # Mountpoints inferred from subvolume name
-                  "/persist" = {
-                    mountOptions = [ "compress=zstd" ];
-                  };
                   "/nix" = {
                     mountOptions = [ "compress=zstd" "noatime" ];
+                  };
+                  "/etc" = {
+                    mountOptions = [ "compress=zstd" "noatime" ];
+                  };
+                  "/home" = {
+                    mountOptions = [ "compress=zstd" ];
                   };
                 };
               };
@@ -43,5 +45,4 @@
         "mode=755"
       ];
     };
-  };
 }
