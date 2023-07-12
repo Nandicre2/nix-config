@@ -26,4 +26,6 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   zramSwap.enable = true;
+
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
