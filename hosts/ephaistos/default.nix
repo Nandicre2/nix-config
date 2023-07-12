@@ -1,8 +1,6 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# System configuration for my SFFPC desktop
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -14,7 +12,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "ephaistos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -54,6 +52,39 @@
     layout = "fr";
     xkbVariant = "";
   };
+
+
+  ### NVIDIA
+  # Make sure opengl is enabled
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  # NVIDIA drivers are unfree.
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-x11"
+      "nvidia-settings"
+    ];
+
+  # Tell Xorg to use the nvidia driver
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia = {
+
+    # Modesetting is needed for most wayland compositors
+    modesetting.enable = true;
+
+    # Use the open source version of the kernel module
+    # Only available on driver 515.43.04+
+    open = true;
+
+    # Enable the nvidia settings menu
+    nvidiaSettings = true;
+  };
+
 
   # Configure console keymap
   console.keyMap = "fr";
