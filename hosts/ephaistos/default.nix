@@ -1,11 +1,13 @@
 # System configuration for my SFFPC desktop
 
-{ config, pkgs, lib, ... }:
+{ inputs, outputs, config, pkgs, lib, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+
+      ../common
     ];
 
   # Bootloader.

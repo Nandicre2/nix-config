@@ -15,8 +15,6 @@ in
 
   networking.hostName = "aphrodite";
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-
   # TODO : check where to put the params below.
 
   # Bootloader.

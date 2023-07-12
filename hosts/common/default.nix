@@ -1,5 +1,5 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ lib, inputs, outputs, ... }:
+{ inputs, outputs, pkgs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -22,4 +22,8 @@
 
   programs.fuse.userAllowOther = true;
   hardware.enableRedistributableFirmware = true;
+
+  boot.kernelPackages = pkgs.linuxPackages_zen;
+
+  zramSwap.enable = true;
 }
