@@ -1,14 +1,15 @@
 { disks ? [ "/dev/nvme0n1" ], ... }:
 {
-    disk.main = {
+    disk.nvme0n1 = {
       device = builtins.elemAt disks 0;
       type = "disk";
       content = {
-          type = "gpt";
-          partitions = {
-            ESP = {
-              priority = 1;
+          format = "gpt";
+          type = "table";
+          partitions = [
+            {
               name = "ESP";
+              bootable = true;
               start = "1MiB";
               end = "1GiB";
               content = {
@@ -16,9 +17,12 @@
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            };
-            root = {
-              size = "100%";
+            }
+            {
+              name = "butter";
+              start = "1GiB";
+              end = "100%";
+              part-type = "primary";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ]; # Override existing partition
@@ -34,8 +38,8 @@
                   };
                 };
               };
-            };
-          };
+            }
+          ];
         };
       };
     nodev."/" = {
