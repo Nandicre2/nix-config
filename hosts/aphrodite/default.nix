@@ -1,12 +1,17 @@
-# System configuration for my laptop
+# System configuration for my laptop Vivobook
 { inputs, outputs, lib, config, pkgs, ... }:
 let ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in
 {
   imports = [
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-amd
-    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.hardware.nixosModules.common-cpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
+    inputs.hardware.nixosModules.common-cpu-amd-pstate # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/pstate.nix
+
+    inputs.hardware.nixosModules.common-gpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
+
+    inputs.hardware.nixosModules.common-pc-laptop # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/default.nix
+    inputs.hardware.nixosModules.common-pc-laptop-acpi_call # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/acpi_call.nix
+    inputs.hardware.nixosModules.common-pc-laptop-ssd # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/ssd
 
     ./hardware-configuration.nix
 
