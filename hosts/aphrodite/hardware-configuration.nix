@@ -5,10 +5,8 @@
   ];
 
   boot = {
-    initrd = {
-      availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod" ];
-      kernelModules = [ "kvm-amd" ];
-    };
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" ];
+    kernelModules = [ "kvm-amd" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -39,6 +37,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp1s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = "x86_64-linux";
-  powerManagement.cpuFreqGovernor = "powersave";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "conservative"; # https://www.kernel.org/doc/Documentation/cpu-freq/governors.txt
 }

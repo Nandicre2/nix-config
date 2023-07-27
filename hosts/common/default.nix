@@ -1,15 +1,36 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ inputs, outputs, pkgs, ... }:
+{ inputs, outputs, pkgs, lib, config, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./nix.nix
-    ./podman.nix
   ];
 
+  nix = {
+    settings = {
+      trusted-users = [ "root" "@wheel" ];
+      auto-optimise-store = lib.mkDefault true;
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      warn-dirty = false;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 2d";
+    };
+
+    # Add each flake input as a registry
+    # To make nix3 commands consistent with the flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+
+    # Add nixpkgs input to NIX_PATH
+    # This lets nix2 commands still use <nixpkgs>
+    nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
+  };
+
   home-manager = {
-    users.nandicre = import ../../home-manager/home.nix;
+    useGlobalPkgs = true;
     useUserPackages = true;
+    users.nandicre = import ../../home-manager/home.nix;
     extraSpecialArgs = { inherit inputs outputs; };
   };
 
