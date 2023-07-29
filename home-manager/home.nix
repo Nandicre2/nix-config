@@ -14,31 +14,16 @@
     # ./nvim.nix
   ];
 
-  nixpkgs = {
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
-    };
-  };
-
   # Set your username
   home = {
     username = "nandicre";
     homeDirectory = "/home/nandicre";
   };
 
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  # home.packages = with pkgs; [ steam ];
-
-  # Enable home-manager and git
   programs.home-manager.enable = true;
   programs.git = {
     enable = true;
-    userName = "Nandicre";
+    userName = "Nandicre2";
     userEmail = "nandicre@protonmail.com";
   };
   programs.gh.enable = true;
@@ -50,5 +35,5 @@
   systemd.user.startServices = "sd-switch";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
-  home.stateVersion = "22.11";
+  home.stateVersion = "23.05";
 }
