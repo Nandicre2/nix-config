@@ -20,15 +20,23 @@
     homeDirectory = "/home/nandicre";
   };
 
-  programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "Nandicre2";
-    userEmail = "nandicre@protonmail.com";
+  programs = {
+    home-manager.enable = true;
+    
+    git = {
+      enable = true;
+      userName = "Nandicre2";
+      userEmail = "nandicre@protonmail.com";
+    };
+
+    gh.enable = true;
+
+    firefox.enable = true;
+    
+    vscode.enable = true;
+    
+    mpv.enable = true;
   };
-  programs.gh.enable = true;
-  programs.firefox.enable = true;
-  programs.vscode.enable = true;
   home.packages = with pkgs; [ freetube ];
 
   # Nicely reload system units when changing configs
