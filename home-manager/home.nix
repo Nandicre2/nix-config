@@ -36,6 +36,8 @@
     vscode.enable = true;
     
     mpv.enable = true;
+
+    fish.enable = true; # Need it in home and configuration.nix (https://nixos.wiki/wiki/Fish#Installation)
   };
   home.packages = with pkgs; [ freetube ];
 

@@ -16,6 +16,7 @@
     ../common
   ];
 
+  # Add machine name
   networking.hostName = "aphrodite";
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

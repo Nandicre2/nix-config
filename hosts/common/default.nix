@@ -115,6 +115,7 @@ in
       ] ++ ifTheyExist [
         "networkmanager" # TODO : check if necessary
       ];
+      shell = pkgs.fish;
     };
   };
 
@@ -125,5 +126,8 @@ in
     users.nandicre = import ../../home-manager/home.nix;
     extraSpecialArgs = { inherit inputs outputs; };
   };
+
+  programs.fish.enable = true; # Need it in home and configuration.nix (https://nixos.wiki/wiki/Fish#Installation)
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Fix vscode on wayland (https://nixos.wiki/wiki/Visual_Studio_Code#Wayland)
 }
