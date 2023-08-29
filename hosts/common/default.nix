@@ -72,6 +72,7 @@ in
 
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
   services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
