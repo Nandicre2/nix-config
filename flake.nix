@@ -14,6 +14,9 @@
     # NixOS-hardware (https://github.com/NixOS/nixos-hardware/)
     hardware.url = "github:nixos/nixos-hardware";
 
+    # Impermanence (https://github.com/nix-community/impermanence)
+    impermanence.url = "github:nix-community/impermanence";
+
     # Manage disks (https://github.com/nix-community/disko)
     disko = {
       url = "github:nix-community/disko";
