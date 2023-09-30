@@ -24,24 +24,29 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     # Choose a config and build with 'nixos-rebuild --flake .#your-hostname'
     # Home-manager is built with the system
     nixosConfigurations = {
       # Primary Desktop (SFFPC)
       ephaistos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/ephaistos ];
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/ephaistos];
       };
       # Laptop VivoBook
       aphrodite = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/aphrodite ];
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/aphrodite];
       };
       #TODO Server - Old desktop
       apollon = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [ ./hosts/apollon ];
+        specialArgs = {inherit inputs;};
+        modules = [./hosts/apollon];
       };
     };
   };
