@@ -28,15 +28,9 @@
   boot = {
     initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
     kernelModules = ["kvm-amd"];
-    loader = {
-      systemd-boot = {
-        enable = true;
-        consoleMode = "max";
-      };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
-      };
+    loader.grub = {
+      efiSupport = true;
+      efiInstallAsRemovable = true;
     };
   };
 
