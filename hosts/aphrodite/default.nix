@@ -42,7 +42,7 @@
 
   disko.devices = {
     disk.main = {
-      device = lib.mkDefault "/dev/sda";
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
