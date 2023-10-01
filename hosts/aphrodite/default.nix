@@ -8,7 +8,6 @@
   system.stateVersion = "23.05";
 
   imports = [
-
     # List of hardware imports, specific to the host
     inputs.hardware.nixosModules.common-cpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
     inputs.hardware.nixosModules.common-cpu-amd-pstate # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/pstate.nix
@@ -18,8 +17,7 @@
     inputs.hardware.nixosModules.common-pc-laptop-ssd # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/ssd
 
     ../common
-
-    inputs.disko.nixosModules.disko
+    ../common/ephemeral-root.nix
   ];
 
   # Add machine name
@@ -28,87 +26,6 @@
   boot = {
     initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
     kernelModules = ["kvm-amd"];
-    loader.grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-    };
-  };
-
-  disko.devices = {
-    disk.main = {
-      device = "/dev/nvme0n1";
-      type = "disk";
-      content = {
-        type = "gpt";
-        partitions = {
-          boot = {
-            size = "1M";
-            type = "EF02"; # for grub MBR
-          };
-          ESP = {
-            name = "ESP";
-            size = "1G";
-            type = "EF00";
-            content = {
-              type = "filesystem";
-              format = "vfat";
-              mountpoint = "/boot";
-            };
-          };
-          persistence = {
-            name = "persistence";
-            size = "100%";
-            content = {
-              type = "lvm_pv";
-              vg = "pool";
-            };
-          };
-        };
-      };
-    };
-    lvm_vg = {
-      pool = {
-        type = "lvm_vg";
-        lvs = {
-          nix = {
-            size = "100G";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/nix";
-              mountOptions = [
-                "defaults"
-                "noatime"
-              ];
-            };
-          };
-          persist = {
-            size = "100%FREE";
-            content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/persist";
-              mountOptions = [
-                "defaults"
-                "noatime"
-              ];
-            };
-          };
-        };
-      };
-    };
-  };
-
-  fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["defaults" "size=128M" "mode=755"];
-  };
-  fileSystems."/home" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["defaults" "size=128M" "mode=0755"];
-    neededForBoot = true;
   };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
