@@ -1,6 +1,7 @@
 # System configuration for my laptop Vivobook
 {
   inputs,
+  lib,
   ...
 }: {
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -17,6 +18,8 @@
     inputs.hardware.nixosModules.common-pc-laptop-ssd # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/ssd
 
     ../common
+
+    inputs.disko.nixosModules.disko
   ];
 
   # Add machine name
