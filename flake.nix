@@ -25,9 +25,7 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
-    home-manager,
     ...
   } @ inputs: {
     # Choose a config and build with 'nixos-rebuild --flake .#your-hostname'
