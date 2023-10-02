@@ -108,9 +108,13 @@ in
     #media-session.enable = true;
   };
 
+  users.mutableUsers = false;
   users.users = {
     nandicre = {
       isNormalUser = true;
+      description = "Nandicre";
+      home = "/home/nandicre";
+      password = "test";
       extraGroups = [
         "wheel"
         "video"
