@@ -52,7 +52,7 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/aphrodite
-          sops-nix.nixosModules.sops
+          impermanence.nixosModules.impermanence          
         ];
       };
       #TODO Server - Old desktop
