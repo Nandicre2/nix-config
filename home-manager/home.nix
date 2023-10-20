@@ -67,7 +67,7 @@
       "Templates"
       "Videos"
     ];
-    allowOther = true;
+    allowOther = false;
   };
   home.persistence."/persist/home/apps" = {
     removePrefixDirectory = true;
