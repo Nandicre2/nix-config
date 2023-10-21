@@ -34,7 +34,16 @@
 
     firefox.enable = true;
     
-    vscode.enable = true;
+    vscode = {
+      enable = true;
+      enableUpdateCheck = true;
+      enableExtensionUpdateCheck = true;
+      # VS Code on Wayland has issues, make sure to set the title bar to custom
+      # https://github.com/microsoft/vscode/issues/181533
+      userSettings = {
+        "window.titleBarStyle" = "custom";
+      };
+    };
     
     mpv.enable = true;
 
