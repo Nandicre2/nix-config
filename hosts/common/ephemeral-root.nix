@@ -83,6 +83,6 @@
   };
 
   boot.initrd.postMountCommands = ''
-  install -d /home/algernon -o algernon -g users -m 0700
+  install -d /home/nandicre -o nandicre -g users -m 0700
   '';
 }
