@@ -49,6 +49,7 @@
         modules = [
           ./hosts/ephaistos
           disko.nixosModules.disko
+          impermanence.nixosModules.impermanence
         ];
       };
       # Laptop VivoBook
