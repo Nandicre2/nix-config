@@ -44,7 +44,9 @@ in
   hardware.enableAllFirmware = lib.mkDefault true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
+  boot.tmp.useTmpfs = true;
+  boot.tmp.tmpfsSize = "2G";
+  
   zramSwap.enable = true;
 
   # Enable networking
@@ -106,9 +108,13 @@ in
     #media-session.enable = true;
   };
 
+  users.mutableUsers = false;
   users.users = {
     nandicre = {
       isNormalUser = true;
+      description = "Nandicre";
+      home = "/home/nandicre";
+      password = "test";
       extraGroups = [
         "wheel"
         "video"
