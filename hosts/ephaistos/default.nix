@@ -11,7 +11,7 @@
     # List of hardware imports, specific to the host
     inputs.nixos-hardware.nixosModules.common-cpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/pstate.nix
-    inputs.nixos-hardware.nixosModules.common-gpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
 
     ../common
     ../common/ephemeral-root.nix
@@ -21,7 +21,7 @@
   networking.hostName = "ephaistos";
 
   boot = {
-    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
+    initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
     kernelModules = ["kvm-amd"];
   };
 
