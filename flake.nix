@@ -46,7 +46,10 @@
       # Primary Desktop (SFFPC)
       ephaistos = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
-        modules = [./hosts/ephaistos];
+        modules = [
+          ./hosts/ephaistos
+          disko.nixosModules.disko
+        ];
       };
       # Laptop VivoBook
       aphrodite = nixpkgs.lib.nixosSystem {
