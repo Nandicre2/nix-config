@@ -21,7 +21,7 @@
   ];
 
   # Add machine name
-  networking.hostName = "ephaistos";
+  networking.hostName = "aphrodite";
 
   boot = {
     initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "sd_mod"];
