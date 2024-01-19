@@ -56,14 +56,15 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./hosts/aphrodite
+          disko.nixosModules.disko
           impermanence.nixosModules.impermanence          
         ];
       };
       #TODO Server - Old desktop
-      apollon = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [./hosts/apollon];
-      };
+      #apollon = nixpkgs.lib.nixosSystem {
+      #  specialArgs = {inherit inputs;};
+      #  modules = [./hosts/apollon];
+      #};
     };
   };
 }
