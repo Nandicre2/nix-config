@@ -82,7 +82,11 @@
     efiInstallAsRemovable = true;
   };
 
-  boot.initrd.postMountCommands = ''
-  install -d /home/nandicre -o nandicre -g users -m 0700
-  '';
+  environment.persistence."/persist" = {
+    hideMounts = true;
+    directories = [
+      { directory = "/home/nandicre"; user = "nandicre"; group = "users"; }
+    ];
+    files = [];
+  };
 }

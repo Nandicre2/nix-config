@@ -64,28 +64,4 @@
    enable = true;
    createDirectories = true;
   };
-
-  home.persistence."/persist/home" = {
-    directories = [
-      "Desktop"
-      "Documents"
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Public"
-      "Templates"
-      "Videos"
-    ];
-    allowOther = false;
-  };
-  home.persistence."/persist/home/apps" = {
-    removePrefixDirectory = true;
-    directories = [
-      "firefox/.cache/mozilla"
-      "firefox/.mozilla"
-    ];
-    files = [
-    ];
-    allowOther = false;
-  };
 }
