@@ -1,8 +1,14 @@
 # This file (and the global directory) holds config that i use on all hosts
-{ inputs, outputs, pkgs, lib, config, ... }:
-let ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in
 {
+  inputs,
+  outputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -10,9 +16,9 @@ in
   # Configure nix
   nix = {
     settings = {
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = ["root" "@wheel"];
       auto-optimise-store = lib.mkDefault true;
-      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      experimental-features = ["nix-command" "flakes" "repl-flake"];
       warn-dirty = false;
     };
 
@@ -24,11 +30,11 @@ in
 
     # Add each flake input as a registry
     # To make nix3 commands consistent with the flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # Add nixpkgs input to NIX_PATH
     # This lets nix2 commands still use <nixpkgs>
-    nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
+    nixPath = ["nixpkgs=${inputs.nixpkgs.outPath}"];
   };
 
   # Configure your nixpkgs instance
@@ -37,7 +43,7 @@ in
       # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -46,7 +52,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
   boot.tmp.tmpfsSize = "2G";
-  
+
   zramSwap.enable = true;
 
   # Enable networking
@@ -115,13 +121,15 @@ in
       description = "Nandicre";
       home = "/home/nandicre";
       password = "test";
-      extraGroups = [
-        "wheel"
-        "video"
-        "audio"
-      ] ++ ifTheyExist [
-        "networkmanager" # TODO : check if necessary
-      ];
+      extraGroups =
+        [
+          "wheel"
+          "video"
+          "audio"
+        ]
+        ++ ifTheyExist [
+          "networkmanager" # TODO : check if necessary
+        ];
       shell = pkgs.fish;
     };
   };
@@ -131,7 +139,7 @@ in
     useGlobalPkgs = true;
     useUserPackages = true;
     users.nandicre = import ../../home-manager/home.nix;
-    extraSpecialArgs = { inherit inputs outputs; };
+    extraSpecialArgs = {inherit inputs outputs;};
   };
 
   programs.fish.enable = true; # Need it in home and configuration.nix (https://nixos.wiki/wiki/Fish#Installation)

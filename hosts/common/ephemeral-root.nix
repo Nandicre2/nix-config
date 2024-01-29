@@ -85,7 +85,11 @@
   environment.persistence."/persist" = {
     hideMounts = true;
     directories = [
-      { directory = "/home/nandicre"; user = "nandicre"; group = "users"; }
+      {
+        directory = "/home/nandicre";
+        user = "nandicre";
+        group = "users";
+      }
     ];
     files = [];
   };

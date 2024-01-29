@@ -58,7 +58,7 @@
         modules = [
           ./hosts/aphrodite
           disko.nixosModules.disko
-          impermanence.nixosModules.impermanence          
+          impermanence.nixosModules.impermanence
         ];
       };
       #TODO Server - Old desktop
