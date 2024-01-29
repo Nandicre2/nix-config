@@ -48,11 +48,7 @@
     mpv.enable = true;
 
     fish.enable = true; # Need it in home and configuration.nix (https://nixos.wiki/wiki/Fish#Installation)
-
-    mangohud.enable = true;
-    mangohud.enableSessionWide = true;
   };
-  home.packages = with pkgs; [ freetube steam ];
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
