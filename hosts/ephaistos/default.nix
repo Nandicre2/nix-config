@@ -3,6 +3,7 @@
   inputs,
   lib,
   config,
+  pkgs,
   ...
 }: {
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
@@ -16,6 +17,7 @@
 
     ../common
     ../common/ephemeral-root.nix
+    ../common/kde.nix
   ];
 
   # Add machine name
@@ -69,9 +71,13 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   # Steam
   programs.steam.enable = true;
+
+  environment.systemPackages = [
+    pkgs.jellyfin-media-player
+  ];
 }

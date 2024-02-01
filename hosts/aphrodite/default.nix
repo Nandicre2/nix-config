@@ -18,6 +18,7 @@
 
     ../common
     ../common/ephemeral-root.nix
+    ../common/kde.nix
   ];
 
   # Add machine name
