@@ -6,6 +6,7 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [ vaapiVdpau ];
   };
 
   # Load nvidia driver for Xorg and Wayland
@@ -41,5 +42,21 @@
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.beta;
+
+    # https://nixos.wiki/wiki/Nvidia#Screen_Tearing_Issues
+    forceFullCompositionPipeline = true;
   };
+  
+  # https://wiki.hyprland.org/Nvidia/
+  environment.variables = {
+    LIBVA_DRIVER_NAME = "nvidia";
+    XDG_SESSION_TYPE = "wayland";
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    WLR_NO_HARDWARE_CURSORS = "1";
+  };
+
+  # Force disable nouveau
+  boot.blacklistedKernelModules = [ "nouveau"];
+  boot.kernelParams = [ "nouveau.modeset=0" ];
 }
