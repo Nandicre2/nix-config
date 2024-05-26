@@ -11,9 +11,9 @@
     xserver = {
       enable = true;
       exportConfiguration = true;
-      # Enable libinput driver for improved touchpad support (enabled by default in most desktop environments).
-      libinput.enable = true;
     };
+    # Enable libinput driver for improved touchpad support (enabled by default in most desktop environments).
+    libinput.enable = true;
     #---------------------------------------------------------------------
     # Desktop Manager Configuration
     #---------------------------------------------------------------------
