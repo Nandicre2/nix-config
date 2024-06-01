@@ -22,13 +22,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Manage secrets (https://github.com/Mic92/sops-nix)
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "";
-    };
   };
 
   outputs = {
@@ -37,7 +30,6 @@
     disko,
     impermanence,
     home-manager,
-    sops-nix,
     ...
   } @ inputs: {
     # Choose a config and build with 'nixos-rebuild --flake .#your-hostname'
