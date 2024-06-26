@@ -54,6 +54,7 @@
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
     WLR_NO_HARDWARE_CURSORS = "1";
+    MOZ_ENABLE_WAYLAND = "0"; # BUG : https://discuss.kde.org/t/plasma-6-1-firefox-instability-since-update/17737
   };
 
   # Force disable nouveau
