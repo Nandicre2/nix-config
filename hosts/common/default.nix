@@ -28,6 +28,8 @@ in {
       options = "--delete-older-than 2d";
     };
 
+    optimise.automatic = true;
+
     # Add each flake input as a registry
     # To make nix3 commands consistent with the flake
     registry = lib.mapAttrs (_: value: {flake = value;}) inputs;

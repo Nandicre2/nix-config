@@ -11,6 +11,7 @@
     # List of hardware imports, specific to the host
     inputs.nixos-hardware.nixosModules.common-cpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/default.nix
     inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate # https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/pstate.nix
+    inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower #https://github.com/NixOS/nixos-hardware/blob/master/common/cpu/amd/zenpower.nix
     inputs.nixos-hardware.nixosModules.common-gpu-amd # https://github.com/NixOS/nixos-hardware/blob/master/common/gpu/amd/default.nix
     inputs.nixos-hardware.nixosModules.common-pc-laptop # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/default.nix
     inputs.nixos-hardware.nixosModules.common-pc-laptop-acpi_call # https://github.com/NixOS/nixos-hardware/blob/master/common/pc/laptop/acpi_call.nix
