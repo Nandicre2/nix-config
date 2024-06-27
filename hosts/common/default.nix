@@ -49,7 +49,8 @@ in {
 
   hardware.enableAllFirmware = lib.mkDefault true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Latest 6.9.* kernel crash plasma
+  #boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.useTmpfs = true;
   boot.tmp.tmpfsSize = "2G";
 
